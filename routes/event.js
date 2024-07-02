@@ -4,10 +4,10 @@ import { adminAuth } from "../middlewares/auth.js";
 
 const router = express.Router();
 
-router.post("/", adminAuth, store);
-router.get("/events", adminAuth, index);
-router.get("/:_id", adminAuth, fetch);
-router.put("/:_id", adminAuth, update);
-router.delete("/:_id", adminAuth, remove);
+router.post("/store", adminAuth, store);
+router.get("/index", adminAuth, index);
+router.get("/fetch/:_id", adminAuth, fetch);
+router.put("/update/:_id", adminAuth, update);
+router.delete("/remove/:_id", adminAuth, remove);
 
 export default router;
