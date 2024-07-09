@@ -19,6 +19,7 @@ const eventSchema = new mongoose.Schema({
   },
   thumbnail: {
     type: String,
+    required: false,
   },
   status: {
     type: String,

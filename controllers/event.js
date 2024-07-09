@@ -7,7 +7,9 @@ import {
 } from "../services/event.js";
 
 const store = async (req, res) => {
-  const { name, startDate, endDate, location, thumbnail } = req.body;
+  const { name, startDate, endDate, location } = req.body;
+  const thumbnail = req.file ? req.file.filename : null;
+
   const eventData = { name, startDate, endDate, location, thumbnail };
   try {
     const result = await createEvent(eventData);

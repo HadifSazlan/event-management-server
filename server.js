@@ -6,11 +6,16 @@ import connectDB from "./config/db.js";
 import authRoutes from "./routes/auth.js";
 import eventRoutes from "./routes/event.js";
 import { adminAuth, userAuth } from "./middlewares/auth.js";
+import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
 const app = express();
 const PORT = 4000;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(express.json());
 app.use(cookieParser());
@@ -21,6 +26,8 @@ app.use(
     credentials: true,
   })
 );
+
+app.use("/api/v1/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.get("/admin", adminAuth, (req, res) => {
   res.send();
