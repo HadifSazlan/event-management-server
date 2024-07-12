@@ -8,7 +8,7 @@ const router = express.Router();
 router.post("/store", adminAuth, upload.single("thumbnail"), store);
 router.get("/index", adminAuth, index);
 router.get("/fetch/:_id", adminAuth, fetch);
-router.put("/update/:_id", adminAuth, update);
+router.put("/update/:_id", adminAuth, upload.single("thumbnail"), update);
 router.delete("/remove/:_id", adminAuth, remove);
 
 export default router;
