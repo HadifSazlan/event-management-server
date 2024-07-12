@@ -47,8 +47,10 @@ const fetch = async (req, res) => {
 
 const update = async (req, res) => {
   const { _id } = req.params;
-  const { name, startDate, endDate, location, thumbnail } = req.body;
-  const eventData = { name, startDate, endDate, location, thumbnail };
+  const { name, startDate, endDate, location, status } = req.body;
+  const thumbnail = req.file ? req.file.filename : null;
+
+  const eventData = { name, startDate, endDate, location, thumbnail, status };
   try {
     const result = await updateEvent(_id, eventData);
     return res.status(200).json(result);
